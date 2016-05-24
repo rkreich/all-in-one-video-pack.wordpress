@@ -122,4 +122,6 @@ $rootCategory = ! empty( $rootCategory ) ? $rootCategory : 0; ?>
 			url          : ajaxurl + '?action=kaltura_ajax&kaction=saveentryname'
 		});
 	});
+
+	//window.top.Kaltura.restoreModalBoxWp26();
 </script>
