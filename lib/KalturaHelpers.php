@@ -127,7 +127,6 @@ class KalturaHelpers {
 	}
 
 	public static function calculatePlayerHeight( $player, $width, $playerRatio = '4:3' ) {
-		$kmodel   = KalturaModel::getInstance();
 		$width    = intval($width);
 
 		if ( empty( $width ) ) {
@@ -273,7 +272,7 @@ class KalturaHelpers {
 		$allowedPlayers = KalturaHelpers::getOption( 'kaltura_allowed_players' );
 		if (!$allowedPlayers)
 			$allowedPlayers = array();
-		/** @var array $allPlayers */
+
 		$allPlayers = KalturaModel::getInstance()->listPlayersUiConfs();
 		$allPlayers = $allPlayers->objects;
 		$players    = array();
@@ -298,6 +297,7 @@ class KalturaHelpers {
 			$mediaCategories = explode( ',', $baseEntry->categories );
 			$mediaCategories = array_slice( $mediaCategories, 0, $maxCategories );
 			foreach ( $mediaCategories as $key => $mediaCategory ) {
+				$fullEntryCategoryWithoutRoot = '';
 				if ( $rootCategory ) {
 					$pos = strpos( $mediaCategory, '>' );
 					if ( $pos !== false ) {
