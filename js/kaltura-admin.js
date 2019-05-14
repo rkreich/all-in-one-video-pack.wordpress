@@ -166,6 +166,10 @@
 		$(document.body).on('click', '#kaltura-media-button', function (event) {
 			var defaultScreen = $(this).data('default-screen');
 			var state;
+			
+			// workaround to ensure main WP editor in text mode so embed code can be inserted Jira DLEMBC-90
+			$('#content-html').trigger('click');
+			
 			if (defaultScreen == 'browse')
 				state = 'iframe:kaltura_browse';
 			else
